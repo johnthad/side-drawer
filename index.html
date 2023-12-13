@@ -235,8 +235,26 @@
         --side-drawer-overlay-opacity: 0.25;
       }
 
+      side-drawer#drawer6 {
+        --side-drawer-transition: transform 0.75s ease-out;
+        --side-drawer-backdrop-filter: blur(10px);
+        --side-drawer-overlay-transition: opacity linear 0.75s;
+        --side-drawer-overlay-opacity: 0.25;
+      }
+
       wc-menu-button {
         width: 60px;
+      }
+
+      button#closer {
+        line-height: 2.5;
+        padding: 0 20px;
+        font-size: 1rem;
+        text-align: center;
+        color: #fff;
+        text-shadow: 1px 1px 1px #000;
+        border-radius: 10px;
+        background-color: var(--purple-6);
       }
     </style>
   </head>
@@ -317,6 +335,15 @@
             <code>&lt;side-drawer right&gt;&lt;side-drawer&gt;</code>
             <side-drawer right id="drawer5"></side-drawer>
           </li>
+          <li>
+            <wc-menu-button id="menuButton6"></wc-menu-button>
+            <code>&lt;side-drawer right modal&gt;&lt;side-drawer&gt;</code>
+            <side-drawer right modal id="drawer6">
+              <div style="display: flex; justify-content: center; padding: 21px 0px">
+                <button type="button" id="closer">Close Drawer</button>
+              </div>
+            </side-drawer>
+          </li>
         </ul>
       </section>
     </main>
@@ -353,12 +380,14 @@
         const menuButton3 = document.querySelector("#menuButton3");
         const menuButton4 = document.querySelector("#menuButton4");
         const menuButton5 = document.querySelector("#menuButton5");
+        const menuButton6 = document.querySelector("#menuButton6");
 
         const drawer = document.querySelector("#drawer");
         const drawer2 = document.querySelector("#drawer2");
         const drawer3 = document.querySelector("#drawer3");
         const drawer4 = document.querySelector("#drawer4");
         const drawer5 = document.querySelector("#drawer5");
+        const drawer6 = document.querySelector("#drawer6");
 
         menuButton.addEventListener("opened", (ev) => {
           drawer.open = true;
@@ -374,6 +403,9 @@
         });
         menuButton5.addEventListener("opened", (ev) => {
           drawer5.open = true;
+        });
+        menuButton6.addEventListener("opened", (ev) => {
+          drawer6.open = true;
         });
 
         drawer.addEventListener("open", (ev) => {
@@ -391,6 +423,9 @@
         drawer5.addEventListener("open", (ev) => {
           menuButton5.open = true;
         });
+        drawer6.addEventListener("open", (ev) => {
+          menuButton6.open = true;
+        });
 
         drawer.addEventListener("close", (ev) => {
           menuButton.open = false;
@@ -406,6 +441,11 @@
         });
         drawer5.addEventListener("close", (ev) => {
           menuButton5.open = false;
+        });
+
+        document.querySelector("#closer").addEventListener("click", (ev) => {
+          menuButton6.open = false;
+          drawer6.open = false;
         });
       }
     </script>

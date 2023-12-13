@@ -114,7 +114,7 @@ export class SideDrawer extends HTMLElement {
     if (this._dialog) {
       this._dialog.addEventListener("click", (event) => {
         if (event.target === this._dialog) {
-          this.open = false;
+          this.open = false || this.modal;
         }
       });
 
@@ -140,6 +140,10 @@ export class SideDrawer extends HTMLElement {
     }
   }
 
+  get modal() {
+    return this.hasAttribute('modal');
+  }
+
   get open() {
     return this.hasAttribute("open");
   }
@@ -157,7 +161,7 @@ export class SideDrawer extends HTMLElement {
   }
 
   static get observedAttributes() {
-    return ["open"];
+    return ["open", "modal"];
   }
 
   /**
