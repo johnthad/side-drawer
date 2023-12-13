@@ -70,6 +70,10 @@ This web component uses [HTML templates](https://caniuse.com/#feat=template), th
 - `right`
   - Add this attribute so the drawer opens from the right instead of the left.
     - Example: `<side-drawer right></side-drawer>`
+- `modal`
+  - Add this attribute so the drawer will not close when clicked.
+    - Example: `<side-drawer modal></side-drawer>`
+  - In order to close the drawer, this attribute requires a button element inside the drawer that when clicked sets `drawer.open = false`.
 
 ### Events
 
