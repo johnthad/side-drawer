@@ -124,6 +124,7 @@ export class SideDrawer extends HTMLElement {
     }
 
     this.upgradeProperty("open");
+    this.upgradeProperty('modal');
   }
 
   // from https://web.dev/custom-elements-best-practices/#make-properties-lazy
